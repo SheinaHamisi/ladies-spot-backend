@@ -28,10 +28,13 @@ public class Salon {
     )
     private Long id;
     @Column(name = "name")
+    @Lob
     private String name;
     @Column(name = "image")
+    @Lob
     private String image;
     @Column(name = "location")
+    @Lob
     private String location;
     @Column(name = "phone")
     private String phone;
