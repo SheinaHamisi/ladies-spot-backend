@@ -8,6 +8,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import javax.persistence.EntityNotFoundException;
+import javax.transaction.Transactional;
 import java.util.List;
 import java.util.Optional;
 
@@ -16,6 +17,7 @@ import java.util.Optional;
 public class SalonServiceImpl implements SalonService {
     private final SalonRepository salonRepository;
 
+    @Transactional
     @Override
     public void addSalon(SalonDto salonDto) {
         Salon salon = new Salon();
@@ -61,6 +63,7 @@ public class SalonServiceImpl implements SalonService {
         return salon.get();
     }
 
+    @Transactional
     @Override
     public void updateSalon(Long salonId, SalonDto salonDto) {
         Optional<Salon> salon = salonRepository.findById(salonId);
@@ -87,6 +90,7 @@ public class SalonServiceImpl implements SalonService {
         salonRepository.save(salon.get());
     }
 
+    @Transactional
     @Override
     public void deleteSalon(Long salonId) {
         Optional<Salon> salon = salonRepository.findById(salonId);
